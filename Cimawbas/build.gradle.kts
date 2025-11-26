@@ -1,50 +1,24 @@
+// use an integer for version numbers
+version = 5
 
-plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-}
+cloudstream {
+    // All of these properties are optional, you can safely remove them
 
-repositories {
-    mavenCentral()
-    maven { url = uri("https://jitpack.io") }
-}
+    description = "cima"
+    authors = listOf("me, who")
 
-android {
-    namespace = "com.youtube"
+    /**
+    * Status int as the following:
+    * 0: Down
+    * 1: Ok
+    * 2: Slow
+    * 3: Beta only
+    * */
+    status = 1 // will be 3 if unspecified
 
-    compileSdk = 34
-    defaultConfig {
-        minSdk = 21
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs = listOf("-XXLanguage:+BreakContinueInInlineLambdas")
-    }
+    tvTypes = listOf("anime")
 
-    buildFeatures {
-        buildConfig = true
-    }
+    iconUrl = "https://ga.db"
 
-    sourceSets {
-        getByName("main") {
-            manifest.srcFile("src/main/AndroidManifest.xml")
-        }
-    }
-}
-
-dependencies {
-    // FIXME remove this when crossplatform is fully supported
-    val cloudstream by configurations
-    implementation("com.google.android.material:material:1.13.0")
-    implementation("androidx.browser:browser:1.9.0")
-    implementation("androidx.room:room-ktx:2.8.0")
-
-    // هذا يوفر كلاس PreferenceFragmentCompat الذي نستخدمه
-    implementation("androidx.preference:preference-ktx:1.2.1")
-
-    cloudstream("com.lagradost:cloudstream3:pre-release")
+    language = "ar"
 }
